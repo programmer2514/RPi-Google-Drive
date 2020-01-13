@@ -21,7 +21,7 @@ if (( $number == "1" )); then
 	sudo rm /home/pi/.gdfs.creds
 	sudo sed -i '\|sudo gdfs -\o allow_other /home/pi/.gdfs.creds /mnt/gdrivefs|d' /etc/rc.local
 	echo Installing updates...
-	sudo apt-get install python-pip
+	sudo apt-get install python3-pip
 	sudo pip3 install gdrivefs
 	sudo pip3 install oauth2client
 	echo Creating directories...
