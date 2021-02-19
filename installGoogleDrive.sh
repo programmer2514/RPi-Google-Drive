@@ -22,8 +22,10 @@ if (( $number == "1" )); then
 	sudo sed -i '\|sudo gdfs -\o allow_other /home/pi/.gdfs.creds /mnt/gdrivefs|d' /etc/rc.local
 	echo Installing updates...
 	sudo apt-get install python3-pip
-	sudo pip3 install gdrivefs
-	sudo pip3 install oauth2client
+	sudo pip3 install google-api-python-client -U
+	sudo pip3 install six -U
+	sudo pip3 install gdrivefs -U
+	sudo pip3 install oauth2client -U
 	echo Creating directories...
 	sudo mkdir /mnt/gdrivefs
 	echo Authorizing Google Drive...
