@@ -42,7 +42,7 @@ if (( $number == "1" )); then
     sudo rm "/home/pi/Google Drive"
 
     # Remove autostart entry if it exists
-    sudo rm /home/pi/.config/autostart/mountgdfs.desktop
+    sudo rm /etc/profile.d/mount-gdfs.sh
 
     echo Installing updates...
 
@@ -101,11 +101,11 @@ if (( $number == "1" )); then
         if [ "$confirm" = "y" ] || [ "$confirm" = "Y" ]; then
 
             # Add autostart entry
-            echo "[Desktop Entry]
-Type=Application
-Exec=gdfs /home/pi/.gdfs/creds /mnt/gdrivefs
-Name=Mount GDFS
-Comment=Mounts Google Drive" >> /home/pi/.config/autostart/mountgdfs.desktop
+            sudo sh -c 'echo "#!/bin/sh
+gdfs /home/pi/.gdfs/creds /mnt/gdrivefs" >> /etc/profile.d/mount-gdfs.sh'
+
+			# Make autostart entry executable
+			sudo chmod +x /etc/profile.d/mount-gdfs.sh
 
             # Exit script
             echo Installation successful...
@@ -143,7 +143,7 @@ if (( $number == "2" )); then
     sudo rm "/home/pi/Google Drive"
 
     # Remove autostart entry
-    sudo rm /home/pi/.config/autostart/mountgdfs.desktop
+    sudo rm /etc/profile.d/mount-gdfs.sh
 
     # Uninstall gdrivefs
     sudo pip3 uninstall gdrivefs
@@ -184,14 +184,14 @@ fi
 if (( $number == "5" )); then
 
     # Remove autostart entry if it exists
-    sudo rm /home/pi/.config/autostart/mountgdfs.desktop
+    sudo rm /etc/profile.d/mount-gdfs.sh
 
     # Add new autostart entry
-    echo "[Desktop Entry]
-Type=Application
-Exec=gdfs /home/pi/.gdfs/creds /mnt/gdrivefs
-Name=Mount GDFS
-Comment=Mounts Google Drive" >> /home/pi/.config/autostart/mountgdfs.desktop
+    sudo sh -c 'echo "#!/bin/sh
+gdfs /home/pi/.gdfs/creds /mnt/gdrivefs" >> /etc/profile.d/mount-gdfs.sh'
+
+	# Make autostart entry executable
+	sudo chmod +x /etc/profile.d/mount-gdfs.sh
 
     # Exit script
     echo Auto-mount added!
@@ -203,7 +203,7 @@ fi
 if (( $number == "6" )); then
 
     # Remove autostart entry
-    sudo rm /home/pi/.config/autostart/mountgdfs.desktop
+    sudo rm /etc/profile.d/mount-gdfs.sh
 
     # Exit script
     echo Auto-mount removed!
