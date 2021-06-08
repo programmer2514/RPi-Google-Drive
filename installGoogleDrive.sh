@@ -104,8 +104,8 @@ if (( $number == "1" )); then
             sudo sh -c 'echo "#!/bin/sh
 gdfs /home/pi/.gdfs/creds /mnt/gdrivefs" >> /etc/profile.d/mount-gdfs.sh'
 
-			# Make autostart entry executable
-			sudo chmod +x /etc/profile.d/mount-gdfs.sh
+            # Make autostart entry executable
+            sudo chmod +x /etc/profile.d/mount-gdfs.sh
 
             # Exit script
             echo Installation successful...
@@ -190,8 +190,8 @@ if (( $number == "5" )); then
     sudo sh -c 'echo "#!/bin/sh
 gdfs /home/pi/.gdfs/creds /mnt/gdrivefs" >> /etc/profile.d/mount-gdfs.sh'
 
-	# Make autostart entry executable
-	sudo chmod +x /etc/profile.d/mount-gdfs.sh
+    # Make autostart entry executable
+    sudo chmod +x /etc/profile.d/mount-gdfs.sh
 
     # Exit script
     echo Auto-mount added!
