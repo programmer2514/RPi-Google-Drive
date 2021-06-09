@@ -1,9 +1,14 @@
 # RPi-Google-Drive
-A google drive live sync client installer for the raspberry pi
+An automated Google Drive live-sync client (gdrivefs) installer for the Raspberry Pi
 
-This simple script will allow the user to automatically mount their Google Drive to their Raspberry Pi and keep it mounted indefinitely through a completely automated process.
+This utility will allow the user to mount their Google Drive to their Raspberry Pi and keep it mounted through reboots in a simple, automated process.
+It includes both a fully automated version (requires a GUI setup) and a headless version (Works over SSH and on non-GUI systems, but requires a bit more setup).
 
-Python 3 must be installed in order for this to work.
+This script will not have the execute permission when first downloaded. To fix this, simply open a terminal and type:
+
+`[sudo] chmod +x "/path/to/installGoogleDrive.sh"`
+
+Python 3 must be installed in order for this script to work.
 
 Basic process acquired from here: https://www.raspberrypi.org/forums/viewtopic.php?t=109587
 
