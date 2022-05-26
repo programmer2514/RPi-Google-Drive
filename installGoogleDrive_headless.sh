@@ -26,7 +26,7 @@ if (( $number == "1" )); then
     echo Initializing...
 
     # Set active directory
-    cd /home/pi
+    cd ~
 
     echo Cleaning up old assets...
 
@@ -36,18 +36,18 @@ if (( $number == "1" )); then
     sudo rm /mnt/gdrivefs
 
     # Delete Google Drive auth token if it exists
-    sudo rm /home/pi/.gdfs/creds
+    sudo rm ~/.gdfs/creds
 
     # Delete Google Drive symbolic link in home directory if it exists
-    sudo rm "/home/pi/Google Drive"
+    sudo rm "$HOME/Google Drive"
 
     # Remove autostart entry if it exists
     sudo rm /etc/profile.d/mount-gdfs.sh
 
     echo Installing updates...
 
-    # Make sure pip3 is installed
-    sudo apt-get install python3-pip
+    # Make sure pip3 and fuse are installed
+    sudo apt-get install python3-pip fuse
 
     # Install necessary python packages
     sudo pip3 install google-api-python-client -U
@@ -85,10 +85,10 @@ if (( $number == "1" )); then
     echo Mounting drive files...
 
     # Mount GDFS
-    gdfs /home/pi/.gdfs/creds /mnt/gdrivefs
+    gdfs ~/.gdfs/creds /mnt/gdrivefs
 
     # Create symbolic link
-    ln -s "/mnt/gdrivefs" "/home/pi/Google Drive"
+    ln -s "/mnt/gdrivefs" "$HOME/Google Drive"
 
     echo Listing files...
     echo _______________________________
@@ -97,7 +97,7 @@ if (( $number == "1" )); then
     confirm="y"
 
     # List files in drive
-    ls "/home/pi/Google Drive"
+    ls "$HOME/Google Drive"
 
     # Ask user for success confirmation
     read -p "Is this correct (Y/n)? " confirm
@@ -111,7 +111,7 @@ if (( $number == "1" )); then
 
             # Add autostart entry
             sudo sh -c 'echo "#!/bin/sh
-gdfs /home/pi/.gdfs/creds /mnt/gdrivefs" >> /etc/profile.d/mount-gdfs.sh'
+gdfs ~/.gdfs/creds /mnt/gdrivefs" >> /etc/profile.d/mount-gdfs.sh'
 
             # Make autostart entry executable
             sudo chmod +x /etc/profile.d/mount-gdfs.sh
@@ -146,10 +146,10 @@ if (( $number == "2" )); then
     sudo rm /mnt/gdrivefs
 
     # Delete Google Drive auth token
-    sudo rm /home/pi/.gdfs/creds
+    sudo rm ~/.gdfs/creds
 
     # Delete Google Drive symbolic link in home directory
-    sudo rm "/home/pi/Google Drive"
+    sudo rm "$HOME/Google Drive"
 
     # Remove autostart entry
     sudo rm /etc/profile.d/mount-gdfs.sh
@@ -168,7 +168,7 @@ if (( $number == "3" )); then
 
     # Mount GDFS
     echo Mounting GDFS...
-    gdfs /home/pi/.gdfs/creds /mnt/gdrivefs
+    gdfs ~/.gdfs/creds /mnt/gdrivefs
 
     # Exit script
     echo GDFS mounted!
@@ -197,7 +197,7 @@ if (( $number == "5" )); then
 
     # Add new autostart entry
     sudo sh -c 'echo "#!/bin/sh
-gdfs /home/pi/.gdfs/creds /mnt/gdrivefs" >> /etc/profile.d/mount-gdfs.sh'
+gdfs ~/.gdfs/creds /mnt/gdrivefs" >> /etc/profile.d/mount-gdfs.sh'
 
     # Make autostart entry executable
     sudo chmod +x /etc/profile.d/mount-gdfs.sh
