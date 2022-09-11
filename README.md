@@ -8,7 +8,7 @@ This script will not have the execute permission when first downloaded. To fix t
 
 `[sudo] chmod +x "/path/to/installGoogleDrive.sh"`
 
-Python 3 must be installed in order for this script to work.
+Python 3.7 or higher must be installed in order for this script to work.
 
 Basic process acquired from here: https://www.raspberrypi.org/forums/viewtopic.php?t=109587
 
